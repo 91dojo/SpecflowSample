@@ -10,7 +10,9 @@ namespace SpecflowSample.steps
     {
         private IndexPage _indexPage;
         private MyAccountPage _myAccountPage;
+        private string _prefix = "1";
         private SignUpPage _signUpPage;
+        private string _suffix = "a";
 
         [AfterFeature()]
         public static void AfterFeature()
@@ -63,10 +65,8 @@ namespace SpecflowSample.steps
         [When(@"Joey sign up with email ""(.*)""")]
         public void WhenJoeySignUpWithEmail(string email)
         {
-            var i = new Random(DateTime.Now.Ticks.GetHashCode()).Next(0, 10);
-            var j = DateTime.Now.ToString("fff");
             _signUpPage = _indexPage.Login.ClickAndGo()
-                                    .SignUp.Email.Set($"{i}{email}{j}")
+                                    .SignUp.Email.Set($"{_prefix}{email}{_suffix}")
                                     .SignUp.CreateAccount.ClickAndGo<SignUpPage>();
         }
 
