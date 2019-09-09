@@ -2,7 +2,6 @@
 
 Scenario: Sign up successful
 	Given Joey is a new user
-	And Joey is in the index page
 	When Joey sign up with email "joeychen@odd-e.com"
 	And account information is
 		| Email              | FirstName | LastName | Password |
